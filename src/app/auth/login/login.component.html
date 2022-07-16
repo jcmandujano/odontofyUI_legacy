@@ -1,0 +1,28 @@
+<main>
+    <section class="row">
+        <section class="login_form_column">
+          <div class="login_form_container">
+            <h1 class="login_form_title">Bienvenido</h1>
+              <p class="subtitle">Por favor proporciona tus datos de acceso</p>
+              <mat-form-field class="login_form_control">
+                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
+                <i class="fa-regular fa-envelope"></i>
+                <mat-label>Escribe tu correo</mat-label>
+                <input matInput>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>Escrine tu contraseña</mat-label>
+                <button class="login_form_pass_toggle" mat-icon-button matSuffix (click)="hide = !hide">
+                  <mat-icon >{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <input matInput>
+              </mat-form-field>
+              <br>
+            <button class="button button--confirm">Login</button><br>
+          </div>
+        </section>
+        <section class="extra_info_column" >
+        </section>
+      </section>
+    </main>

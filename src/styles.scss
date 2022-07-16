@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button {
+    font-weight: 700;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+
+.button--confirm{
+    background-color: #407dda;
+}
+
+.button--cancel{
+    background-color: #eb5757;
+}
+
+.button--alt{
+    background-color: #eb5757;
+    color: white;
+}
+
+h1{
+    color: #407dda;
+}
+
+.subtitle{
+    color:#7a7a7a;
+}
+
