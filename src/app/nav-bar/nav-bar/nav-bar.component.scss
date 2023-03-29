@@ -1,0 +1,44 @@
+.spacer {
+    flex: 1 1 auto;
+}
+.main-toolbar{
+    padding: 0 50px;
+    background-color: #fff;
+    color: #6CA6FE;
+    margin-top: 15px;
+}
+
+mat-button:hover {
+    background: #fff;
+  }
+
+button:focus{
+    outline: 0px;
+}
+
+.menu-item:hover{
+    color: #407DDA;
+    background-color: #fff !important;
+}
+
+.mat-button ::ng-deep .mat-button-focus-overlay {
+    display: none;
+}
+
+
+.extended-fab-button {
+    width: unset;
+    padding: 0px 15px;
+    border-radius: 29px;
+    height: 30px;
+  
+    .mat-icon {
+      margin-right: 10px;
+    }
+
+  }
+
+  .custom-wrapper {
+    position: relative;
+    top: -20px;
+}

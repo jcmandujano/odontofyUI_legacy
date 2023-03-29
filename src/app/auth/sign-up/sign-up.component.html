@@ -1,1 +1,118 @@
-<p>sign-up works!</p>
+<main>
+    <section class="login_row">
+        <section class="login_form_column">
+          <section class="login_form_logo">
+            <img src="../../../assets/img/logo.png" (click)="gotoHome()" alt="">
+          </section>
+          <div class="login_form_container">
+            <form [formGroup]="signupForm">
+            <div class="login_form_container_welcome">
+              <h1 class="login_form_title">Cuentanos sobre ti</h1>
+              <p class="subtitle">Por favor proporcionanos tus datos para poderte brindar una solución a tu medida</p>
+            </div>
+            <div class="login_form_container_form">
+              <mat-form-field class="login_form_control">
+                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
+                <mat-label>Nombre</mat-label>
+                <input matInput  formControlName="nombre">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>Apellido Paterno</mat-label>
+                <input matInput formControlName="apellido_pat">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>Apellido Materno</mat-label>
+                <input matInput formControlName="apellido_mat">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fechaNac">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+             <!--  <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>¿Cuál es tu profesion?</mat-label>
+                <input matInput>
+              </mat-form-field> -->
+              <br>
+              <!-- <mat-form-field class="login_form_control">
+                <mat-label>Sexo</mat-label>
+                <input matInput formControlName="genero">
+              </mat-form-field> -->
+              <mat-form-field class="login_form_control">
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="genero">
+                  <mat-select-trigger>
+                    {{signupForm.value.genero || ''}}
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
+                <fa-icon class="prefix_form_color" [icon]="faEnvelope" size="2x" matPrefix></fa-icon>
+                <mat-label>Escribe tu correo</mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
+                <fa-icon class="prefix_form_color" [icon]="faEnvelope" size="2x" matPrefix></fa-icon>
+                <mat-label>Escribe tu password</mat-label>
+                <input matInput formControlName="password">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="login_form_control">
+                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
+                <fa-icon class="prefix_form_color" [icon]="faContactBook" size="2x" matPrefix></fa-icon>
+                <mat-label>Escribe tu telefono</mat-label>
+                <input matInput formControlName="telefono">
+              </mat-form-field>
+             <!--  <br>
+              <section class="encuesta">
+                <h4>¿Actualmente utilizas alguna herramienta de software en tu consultorio?</h4>
+                <mat-radio-group >
+                    <mat-radio-button class="example-margin" value="after">Si</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="before">No</mat-radio-button>
+                  </mat-radio-group>
+              </section>
+              <br>
+              <mat-form-field class="login_form_control">
+                <mat-label>¿Cuál es tu promedio de pacientes mensual?</mat-label>
+                <input matInput>
+              </mat-form-field> -->
+              <br>
+              <mat-form-field class="example-full-width" appearance="fill" class="login_form_control">
+                <mat-label>Cuentanos mas sobre ti</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..." cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="5"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="login_form_container_actions">
+              <button class="button button--confirm"  (click)="doSignUp()">Enviar</button><br>
+              <p class="options_text" routerLink="/login">¿Ya tienes cuenta?</p>
+            </div>
+            <div class="login_form_containe_legal">
+              <div class="row">
+                <div class="col-6">
+                  <p class="legal_text">Términos y condiciones</p>
+                </div>
+                <div class="col-6">
+                  <p class="legal_text">Avido de privacidad</p>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        </section>
+        <section class="extra_info_column" >
+        </section>
+      </section>
+    </main>

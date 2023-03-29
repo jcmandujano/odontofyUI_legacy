@@ -1,11 +1,11 @@
-.row {
+.login_row {
     display: flex;
 }
-  
+    
 /* Create two equal columns that sits next to each other */
 .login_form_column {
     flex: 60%;
-   // padding: 10px;
+    // padding: 10px;
     height: 100vh; /* Should be removed. Only for demonstration */
     background-color: white;
 }
@@ -28,20 +28,25 @@ h1{
 }
 
 .login_form_container{
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 10px;
     text-align: center;
+    width: 25%;
 }
 
 .login_form_control{
+    margin-bottom: 15px;
     width: 100%;
 }
 
 .login_form_pass_toggle{
     background: transparent;
     border: 0;
+    color: #c0d9ff !important;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -67,10 +72,61 @@ mat-label {
     margin-top: 5px;
 }
 
-mat-icon{
-    margin: 0px 5px;
+mat-label {
+    padding-left: 15px;
 }
 
 .prefix_form_color{
     color: #407dda !important;
+    margin: 0px 20 !important;
+}
+
+.login_form_logo{
+    padding: 15px;
+    margin-bottom: 120px;
+}
+
+.login_form_container_welcome{
+    margin-bottom: 40px;
+}
+
+.login_form_container_form{
+    margin-bottom: 40px;
+}
+
+.button{
+    margin-bottom: 40px;
+}
+.login_form_containe_legal{
+    margin-top: 100px;
+}
+
+.subtitle{
+    font-size: 17px;
+}
+
+.legal_text{
+    font-size: 17px;
+    color: #b8b8b8;
+    text-decoration: underline;
+}
+
+.options_text{
+    font-size: 18px;
+    font-weight: 500;
+    color: #407dda;
+    margin-bottom: 20px;
+}
+
+.legal_text:hover{
+    cursor: pointer;
+}
+
+.options_text:hover{
+    cursor: pointer;
+}
+
+
+input{
+    margin-left: 10px;
 }

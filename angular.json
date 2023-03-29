@@ -109,5 +109,7 @@
       }
     }
   },
-  "defaultProject": "odontofyUI"
+  "cli": {
+    "analytics": "e7ecfeaf-bf7e-456d-b8d2-9891b56f4fd7"
+  }
 }
