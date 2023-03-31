@@ -7,28 +7,32 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from "@angular/material/legacy-form-field";
-import { MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule} from '@angular/material/select';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LandingComponent } from './auth/landing/landing.component';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
-import { MatLegacyRadioModule as MatRadioModule } from '@angular/material/legacy-radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { interceptorProviders  } from './services/utils/interceptor.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule} from '@angular/material/list';
 import { NavBarComponent } from './nav-bar/nav-bar/nav-bar.component';
 import { CrearPacientesComponent } from './pacientes/crear-pacientes/crear-pacientes.component';
 import { ListaPacientesComponent } from './pacientes/lista-pacientes/lista-pacientes.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatFormFieldModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
