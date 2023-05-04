@@ -72,9 +72,7 @@
   padding: 4px 21px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 14px;
-  cursor: pointer;
   border-radius: 80px;
   letter-spacing: 0.02em;
 }
@@ -160,6 +158,8 @@ mat-card-title{
   width: 15px;
   height: auto;
   margin: 0px 10px;
+  position: relative;
+  top: 8px !important;
 }
 
 .custom_title{
@@ -258,17 +258,13 @@ mat-list{
 .example-full-width {
   margin-top: 15px;
   width: 80%;
-  background: rgba(217, 232, 255, 0.4);
-  color: #6CA6FE;
 }
 
 .pacientes_container{
   margin-top: 15px;
 }
 
-.searchInput{
-  color: #6CA6FE;
-}
+
 
 .dashboard_finanzas_table_title{
   font-family: 'Roboto Condensed';
@@ -306,4 +302,15 @@ mat-list{
   font-size: 20.8571px;
   line-height: 30px;
   color: #EB5757;
+}
+
+.dashboard_list_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard_list_actons{
+  display: flex;
+  align-items: center;
 }

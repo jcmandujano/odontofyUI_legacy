@@ -23,7 +23,7 @@ import { interceptorProviders  } from './services/utils/interceptor.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCardModule } from '@angular/material/card';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'
 import { MatListModule} from '@angular/material/list';
 import { NavBarComponent } from './nav-bar/nav-bar/nav-bar.component';
 import { CrearPacientesComponent } from './pacientes/crear-pacientes/crear-pacientes.component';

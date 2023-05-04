@@ -8,7 +8,11 @@
         <span class="slogan">Tu aplicacion de gestión odontologica</span>
     </div>
     <div class="col-2" align="end">
-        <button  class="dashboard_button" (click)="doLogout()"><mat-icon class="dashboard_logout_icon" svgIcon="logout" ></mat-icon><span class="label_exception">Log Out</span></button>
+        <!-- <button  class="dashboard_button" (click)="doLogout()"><mat-icon class="dashboard_logout_icon" svgIcon="logout" ></mat-icon><span class="label_exception">Log Out</span></button>-->
+        <button mat-fab extended  class="dashboard_button mat-elevation-z0">
+            <mat-icon svgIcon="logout"></mat-icon>
+            Log Out
+          </button>
     </div>
 </div>
 <div class="row dashboard-title">
@@ -40,16 +44,19 @@
                           <mat-card-content>
                             <mat-list role="list">
                                 <mat-list-item *ngFor="let number of numbers">
-                                    <div>
-                                        <mat-icon class="dashboard_agenda_dot" svgIcon="agendaDot"></mat-icon>
-                                        <span><span class="day">Hoy </span><span class="hour">00:00 </span><span class="date_name">Nombre del paciente</span></span> 
+                                    <div class="dashboard_list_container">
+                                        <div>
+                                            <mat-icon class="dashboard_agenda_dot" svgIcon="agendaDot"></mat-icon>
+                                            <span><span class="day">Hoy </span><span class="hour">00:00 </span><span class="date_name">Nombre del paciente</span></span> 
+                                        </div>
+                                        <div class="dashboard_list_actons">
+                                            <mat-icon class="dashboard_logout_icon" svgIcon="iniciaCita"></mat-icon>
+                                            <span class="cita">Iniciar cita</span>
+                                            <mat-icon class="dashboard_logout_icon" svgIcon="editaCita"></mat-icon>
+                                            <mat-icon class="dashboard_logout_icon" svgIcon="eliminaCita"></mat-icon>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <mat-icon class="dashboard_logout_icon" svgIcon="iniciaCita"></mat-icon>
-                                        <span class="cita">Iniciar cita</span>
-                                        <mat-icon class="dashboard_logout_icon" svgIcon="editaCita"></mat-icon>
-                                        <mat-icon class="dashboard_logout_icon" svgIcon="eliminaCita"></mat-icon>
-                                    </div>
+                                    
                                 </mat-list-item>
                               </mat-list>
                           </mat-card-content>

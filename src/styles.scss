@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
 html, body { height: 100%; }
 body { margin: 0; font-family: "Roboto Condensed", "Helvetica Neue", sans-serif; }
 
@@ -40,3 +39,19 @@ h1{
     color:#7a7a7a;
 }
 
+
+.mat-mdc-text-field-wrapper {
+    background-color: #fff !important;
+}
+
+.mdc-text-field {
+    background-color: #fff !important;
+}
+
+.mdc-text-field--filled {
+    background-color: #fff !important;
+}
+
+.mdc-text-field--focused {
+    background-color: #fff !important;
+}

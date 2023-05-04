@@ -1,24 +1,27 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
 import {MatTableDataSource} from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 export interface PeriodicElement {
+  position: string;
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  registro: string;
+  adeudo: number;
+  proximaCita: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: '00001', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00002', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00003', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00004', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00005', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00006', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00007', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00008', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00009', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
+  {position: '00010', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
 ];
 @Component({
   selector: 'app-lista-pacientes',
@@ -26,9 +29,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./lista-pacientes.component.scss']
 })
 export class ListaPacientesComponent implements OnInit {
+  constructor(private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer, private elementRef: ElementRef) {
+      this.matIconRegistry.addSvgIcon(
+        "pacientes",
+        this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_user.svg")
+      );
+    }
     displayedColumns: string[] = ['select', 'id', 'nombre', 'ingreso', 'adeudo', 'prox_cita'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument
+        .body.style.backgroundColor = '#ffffff';
+}
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

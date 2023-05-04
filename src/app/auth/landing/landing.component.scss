@@ -25,10 +25,16 @@
 }
 
 .button{
+    --mdc-text-button-label-text-color: white;
+    -webkit-tap-highlight-color:aqua !important;
+    border-radius: 25px;
     font-size: 17px;
     width: 160px;
     height: 50px;
 }
+.mat-mdc-raised-button{
+    color: #407DDA !important;
+  }
 
 :focus {
     outline:none;
@@ -37,3 +43,4 @@
  :host .mat-button{
     border-radius: 25px;
 }
+

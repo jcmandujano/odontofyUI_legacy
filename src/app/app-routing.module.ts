@@ -9,15 +9,16 @@ import { ListaPacientesComponent } from './pacientes/lista-pacientes/lista-pacie
 
 const routes: Routes = [
   { path: '',
-  //component: LandingComponent,
-  component: ListaPacientesComponent,
+  component: LandingComponent,
+  //component: ListaPacientesComponent,
   redirectTo: '',
   pathMatch: 'full'
  },
  { path: 'login', component: LoginComponent },
  { path: 'register', component: SignUpComponent },
  { path: 'dashboard', component: DashboardComponent },
- { path: 'crea-pacientes', component: CrearPacientesComponent},
+ //{ path: 'crea-pacientes', component: CrearPacientesComponent},
+ { path: 'crea-pacientes', component: ListaPacientesComponent},
  { path: 'pacientes', component: ListaPacientesComponent}
 ];
 

@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth/auth.service'
 import { SessionStorageService } from '../../services/utils/session-storage.service'
 import { User } from '../../services/user/user.model'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
