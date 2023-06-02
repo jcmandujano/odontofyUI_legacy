@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-    this.router.navigate(['/dashboard'])
-    /* this.loginForm.markAllAsTouched()
+    this.loginForm.markAllAsTouched()
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe(data=>{
         this.userdata = data;
@@ -52,11 +51,10 @@ export class LoginComponent implements OnInit {
       })
     }else{
       this.validateForm()
-    } */
+    }
   }
 
   validateForm(){
-    console.log('FORM', this.loginForm.controls.username)
     if(this.loginForm.controls.username.errors?.['pattern']){
       this.openSnackbar('Por favor ingresa un correo valido','Ok')
       return
