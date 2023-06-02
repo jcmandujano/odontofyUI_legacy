@@ -1,3 +1,4 @@
+<div class="progress-loader"><mat-progress-spinner class="loader" [mode]="'indeterminate'"> </mat-progress-spinner>`</div>
 <main>
     <section class="login_row">
         <section class="login_form_column">
@@ -34,65 +35,24 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-             <!--  <br>
-              <mat-form-field class="login_form_control">
-                <mat-label>¿Cuál es tu profesion?</mat-label>
-                <input matInput>
-              </mat-form-field> -->
               <br>
-              <!-- <mat-form-field class="login_form_control">
-                <mat-label>Sexo</mat-label>
-                <input matInput formControlName="genero">
-              </mat-form-field> -->
               <mat-form-field class="login_form_control">
-                <mat-label>Sexo</mat-label>
-                <mat-select formControlName="genero">
-                  <mat-select-trigger>
-                    {{signupForm.value.genero || ''}}
-                  </mat-select-trigger>
-                  <mat-option *ngFor="let gender of genderList" [value]="gender">{{gender}}</mat-option>
-                </mat-select>
+                <fa-icon class="prefix_form_color" [icon]="faContactBook" size="2x" matPrefix></fa-icon>
+                <mat-label>Escribe tu telefono</mat-label>
+                <span matPrefix>&nbsp;+52&nbsp;</span>
+                <input matInput  mask="(000) 000-0000" formControlName="telefono">
               </mat-form-field>
               <br>
               <mat-form-field class="login_form_control">
-                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
                 <fa-icon class="prefix_form_color" [icon]="faEnvelope" size="2x" matPrefix></fa-icon>
                 <mat-label>Escribe tu correo</mat-label>
                 <input matInput formControlName="email">
               </mat-form-field>
               <br>
               <mat-form-field class="login_form_control">
-                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
-                <fa-icon class="prefix_form_color" [icon]="faEnvelope" size="2x" matPrefix></fa-icon>
+                <fa-icon class="prefix_form_color" [icon]="fakey" size="2x" matPrefix></fa-icon>
                 <mat-label>Escribe tu password</mat-label>
                 <input matInput formControlName="password">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="login_form_control">
-                <!-- <mat-icon class="prefix_form_color" matPrefix> email</mat-icon> -->
-                <fa-icon class="prefix_form_color" [icon]="faContactBook" size="2x" matPrefix></fa-icon>
-                <mat-label>Escribe tu telefono</mat-label>
-                <input matInput formControlName="telefono">
-              </mat-form-field>
-             <!--  <br>
-              <section class="encuesta">
-                <h4>¿Actualmente utilizas alguna herramienta de software en tu consultorio?</h4>
-                <mat-radio-group >
-                    <mat-radio-button class="example-margin" value="after">Si</mat-radio-button>
-                    <mat-radio-button class="example-margin" value="before">No</mat-radio-button>
-                  </mat-radio-group>
-              </section>
-              <br>
-              <mat-form-field class="login_form_control">
-                <mat-label>¿Cuál es tu promedio de pacientes mensual?</mat-label>
-                <input matInput>
-              </mat-form-field> -->
-              <br>
-              <mat-form-field class="example-full-width" appearance="fill" class="login_form_control">
-                <mat-label>Cuentanos mas sobre ti</mat-label>
-                <textarea matInput placeholder="Ex. It makes me feel..." cdkTextareaAutosize
-                cdkAutosizeMinRows="5"
-                cdkAutosizeMaxRows="5"></textarea>
               </mat-form-field>
             </div>
             <div class="login_form_container_actions">

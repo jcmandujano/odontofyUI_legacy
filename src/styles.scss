@@ -55,3 +55,16 @@ h1{
 .mdc-text-field--focused {
     background-color: #fff !important;
 }
+
+.progress-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0px;
+    bottom: 0;
+    z-index: 9999999;
+  }
