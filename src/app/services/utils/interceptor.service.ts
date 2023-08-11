@@ -8,7 +8,6 @@ const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
 export class InterceptorService implements HttpInterceptor {
  constructor(private token: SessionStorageService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('intecept')
     let authReq = req;
     const token = this.token.getToken();
     if (token != null) {

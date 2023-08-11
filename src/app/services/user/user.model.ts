@@ -19,13 +19,22 @@ class Profile {
 }
 
 export class User {
-    public jwt!: string
-    public profile!: Profile
-
-    constructor(){
-        this.jwt = ''
-        this.profile = new Profile();
-    }
+    public id!: number
+    public username!: string
+    public email!: string
+    public provider!: string
+    public confirmed!: boolean
+    public blocked!: boolean
+    public createdAt!: Date
+    public updatedAt!: Date
+    public nombre!: string
+    public apellido_paterno!: string
+    public apellido_materno!: string
+    public fecha_nacimiento!: Date
+    public no_cedula!: string
+    public especialidad!: string
+    public cedula_especialidad!: string
+    public biografia!: string
 
     /* static fromJson(json: any): User{
         const user = new User()

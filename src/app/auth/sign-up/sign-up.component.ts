@@ -64,6 +64,7 @@ export class SignUpComponent implements OnInit {
     console.log('FORM PARA REGISTRO', this.buildSignupData(this.signupForm.value))
     this.authService.register(this.buildSignupData(this.signupForm.value)).subscribe(data=>{
       console.log('Se registro correctamente', data)
+      this.router.navigate(['/dashboard'])
     })
   }
 

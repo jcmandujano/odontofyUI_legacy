@@ -17,6 +17,7 @@ export class AppComponent {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      this.router.navigate(['/dashboard'])
     }else{
       this.router.navigate([''])
     }

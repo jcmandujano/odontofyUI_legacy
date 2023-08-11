@@ -39,20 +39,20 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(){
-    this.router.navigate(['/dashboard'])
-    /* this.loginForm.markAllAsTouched()
+    this.loginForm.markAllAsTouched()
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe(data=>{
         this.userdata = data;
+        console.log('USERDATA', data)
         this.storeSession(data)
         this.router.navigate(['/dashboard'])
       },(error)=>{
-        console.log('ERROR', error.error.error.message)
+        console.log('ERRORRRRR', error.error.error.message)
         this.openSnackbar(`Ocurrio un error: ${error.error.error.message}`, 'Ok')
       })
     }else{
       this.validateForm()
-    } */
+    }
   }
 
   validateForm(){
@@ -77,9 +77,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  storeSession(userData:User){
+  storeSession(userData:any){
     this.sessionService.saveToken(userData.jwt)
-    this.sessionService.saveUser(userData.profile)
+    this.sessionService.saveUser(userData.user)
   }
 
 }

@@ -9,7 +9,7 @@
     </div>
     <div class="col-2" align="end">
         <!-- <button  class="dashboard_button" (click)="doLogout()"><mat-icon class="dashboard_logout_icon" svgIcon="logout" ></mat-icon><span class="label_exception">Log Out</span></button>-->
-        <button mat-fab extended  class="dashboard_button mat-elevation-z0">
+        <button mat-fab extended  class="dashboard_button mat-elevation-z0" (click)="doLogout()">
             <mat-icon svgIcon="logout"></mat-icon>
             Log Out
           </button>
@@ -18,7 +18,7 @@
 <div class="row dashboard-title">
     <!--here goes name and settings-->
     <div class="col-6">
-        <h1 class="dashboard-title-name">Nombre Apellido</h1>
+        <h1 class="dashboard-title-name">{{ currentUser.nombre + ' ' + currentUser.apellido_paterno + ' '+ currentUser.apellido_materno| titlecase}}</h1>
         <p class="welcome-letter">Bienvenido ¿Que necesitas hacer hoy?</p>
     </div>
     

@@ -4,6 +4,7 @@ import { SessionStorageService } from '../services/utils/session-storage.service
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";   
+import { User } from '../services/user/user.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class DashboardComponent implements OnInit {
   numbers: number[];
+  currentUser: User = new User;
 
   constructor(private sessionService : SessionStorageService,
   private router: Router, private elementRef: ElementRef,
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit {
    }
   faEnvelope = faEnvelope;
   ngOnInit(): void {
+    this.currentUser = this.sessionService.getUser();
   }
 
   ngAfterViewInit(){
