@@ -30,6 +30,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { AuthModule } from './auth/auth.module';
 import { PacientesModule } from './pacientes/pacientes.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PacientesModule } from './pacientes/pacientes.module';
     MatCheckboxModule,
     MatPaginatorModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatIconModule,
     MatToolbarModule,

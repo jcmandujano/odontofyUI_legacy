@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
   }
 
   validateForm(){
-    console.log('FORM', this.loginForm.controls.username)
     if(this.loginForm.controls.username.errors?.['pattern']){
       this.openSnackbar('Por favor ingresa un correo valido','Ok')
       return

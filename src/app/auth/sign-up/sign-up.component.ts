@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEnvelope, faKeyboard, faContactBook } from '@fortawesome/free-regular-svg-icons';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SessionStorageService } from 'src/app/services/utils/session-storage.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { User } from '../../services/user/user.model'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface signUpUserData{
-  nombre: string
-  apellido_paterno: string
-  apellido_materno: string
-  fecha_nacimiento: Date
-  genero: string
-  email: string 
-  username:string
-  password:string
-  telefono: string
-  biografia: string
+  nombre?: string
+  apellido_paterno?: string
+  apellido_materno?: string
+  fecha_nacimiento?: Date
+  genero?: string
+  email?: string 
+  username?:string
+  password?:string
+  telefono?: string
+  biografia?: string
 }
 
 @Component({
@@ -29,24 +30,23 @@ export class SignUpComponent implements OnInit {
   faEnvelope = faEnvelope;
   fakey = faKeyboard
   faContactBook = faContactBook
-  genderList: string[] = ['Masculino', 'Femenino', 'No binario'];
+  userdata = new User;
+  spinner= false
+  emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   userData = new User;
   signupData: signUpUserData | undefined
   signupForm = new FormGroup({
-    nombre: new FormControl(''),
-    apellido_pat: new FormControl(''),
-    apellido_mat: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    fechaNac: new FormControl(''),
-    genero: new FormControl(''),
-    ocupacion: new FormControl(''),
-    telefono: new FormControl(''),
-    domicilio: new FormControl(''),
-    biografia: new FormControl(''),
+    nombre: new FormControl('', Validators.required),
+    apellido_pat: new FormControl('', Validators.required),
+    apellido_mat: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.emailRegex)])),
+    password: new FormControl('', Validators.required),
+    fechaNac: new FormControl('', Validators.required),
+    telefono: new FormControl('', Validators.required),
   });
   constructor( private router: Router,
     public authService: AuthService, 
+    private snackBar: MatSnackBar,
     private sessionService : SessionStorageService ) { }
 
   ngOnInit(): void {
@@ -61,11 +61,52 @@ export class SignUpComponent implements OnInit {
   }
 
   doSignUp(){
-    console.log('FORM PARA REGISTRO', this.buildSignupData(this.signupForm.value))
-    this.authService.register(this.buildSignupData(this.signupForm.value)).subscribe(data=>{
-      console.log('Se registro correctamente', data)
-      this.router.navigate(['/dashboard'])
-    })
+    this.signupForm.markAllAsTouched()
+    if(this.signupForm.valid){
+      this.spinner = true
+      this.authService.register(this.buildSignupData(this.signupForm.value)).subscribe(data=>{
+        this.userdata = data;
+        this.storeSession(data)
+        this.spinner = false
+        this.router.navigate(['/dashboard'])
+      })
+    }else{
+      this.validateForm()
+    }
+  }
+
+  storeSession(userData:any){
+    this.sessionService.saveToken(userData.jwt)
+    this.sessionService.saveUser(userData.user)
+  }
+
+  validateForm(){
+    if(this.signupForm.controls.email.errors?.['pattern']){
+      this.openSnackbar('Por favor ingresa un correo valido','Ok')
+      return
+    }
+    if(this.signupForm.controls.nombre.status === 'INVALID' ){
+      this.openSnackbar('Por favor ingresa un tu nombre','Ok')
+      return
+    }else if(this.signupForm.controls.apellido_pat.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu apellido paterno','Ok')
+      return
+    }else if(this.signupForm.controls.apellido_mat.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu apellido materno','Ok')
+      return
+    }else if(this.signupForm.controls.fechaNac.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu fecha de nacimiento','Ok')
+      return
+    }else if(this.signupForm.controls.telefono.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu numero de teléfono','Ok')
+      return
+    }else if(this.signupForm.controls.email.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu correo','Ok')
+      return
+    }else if(this.signupForm.controls.password.status === 'INVALID'){
+      this.openSnackbar('Por favor ingresa tu password','Ok')
+      return
+    }
   }
 
   buildSignupData(formData: any): signUpUserData{
@@ -74,14 +115,18 @@ export class SignUpComponent implements OnInit {
       apellido_paterno: formData.apellido_pat,
       apellido_materno: formData.apellido_mat,
       fecha_nacimiento: formData.fechaNac,
-      genero: formData.genero,
       email: formData.email,
       username: formData.email,
       password: formData.password,
       telefono: formData.telefono,
-      biografia: formData.biografia
     }
     return data;
+  }
+
+  openSnackbar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000
+    });
   }
 
 }
