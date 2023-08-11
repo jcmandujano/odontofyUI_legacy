@@ -2,10 +2,9 @@
     flex: 1 1 auto;
 }
 .main-toolbar{
-    padding: 0 50px;
-    background-color: #fff;
+    padding: 50px 50px;
+    background-color: transparent;
     color: #6CA6FE;
-    margin-top: 15px;
 }
 
 mat-button:hover {
@@ -27,7 +26,7 @@ button:focus{
 
 .menu-item:hover{
     color: #407DDA;
-    background-color: #fff !important;
+    background-color: transparent !important;
 }
 
 .mat-mdc-button {

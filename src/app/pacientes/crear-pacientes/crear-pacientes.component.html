@@ -1,1 +1,572 @@
-<p>crear-pacientes works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="progress-loader" *ngIf="spinner">
+    <mat-progress-spinner [mode]="'indeterminate'"> </mat-progress-spinner>
+  </div>
+<form [formGroup]="crearPacientesForm">
+    <div class="container-fluid main-container">
+        <div class="row navigation_row">
+            <div class="col-12">
+                <span class="pacientes_navigation">Inicio > Pacientes</span>
+            </div>
+        </div>
+        <section id="ficha_identificacion">
+            <div class="row pacientes_header_row">
+                <div class="col-12">
+                    <div class="title_container">
+                        <span class="section_title">Ficha de Identificación</span>
+                    </div>
+                </div>
+            </div>
+            <section class="row">
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                        <mat-error *ngIf="crearPacientesForm.controls['nombre'].invalid">Debes ingresar el numbre</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Apellido Paterno</mat-label>
+                        <input matInput formControlName="apellido_paterno">
+                        <mat-error *ngIf="crearPacientesForm.controls['apellido_paterno'].invalid">Debes ingresar el apellido paterno</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Apellido Materno</mat-label>
+                        <input matInput formControlName="apellido_materno">
+                        <mat-error *ngIf="crearPacientesForm.controls['apellido_materno'].invalid">Debes ingresar el apellido materno</mat-error>
+                    </mat-form-field>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Edad</mat-label>
+                        <input matInput formControlName="edad">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" (dateInput)="onDateChange($event)" (dateChange)="onDateChange($event)">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-error *ngIf="crearPacientesForm.controls['fecha_nacimiento'].invalid">Debes ingresar la fecha de nacimiento</mat-error>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select matNativeControl formControlName="genero">
+                          <mat-option value="Masculino">Masculino</mat-option>
+                          <mat-option value="Femenino">Femenino</mat-option>
+                          <mat-option value="No Especifica">Indefinido</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Ocupación</mat-label>
+                        <input matInput formControlName="ocupacion">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field class="full-width">
+                        <mat-label>Estado Civil</mat-label>
+                        <mat-select matNativeControl formControlName="estado_civil">
+                          <mat-option value="Casad@">Casad@</mat-option>
+                          <mat-option value="Divorciad@">Divorciad@</mat-option>
+                          <mat-option value="No aplica">No aplica</mat-option>
+                          <mat-option value="Separad@">Separad@</mat-option>
+                          <mat-option value="Solter@">Solter@</mat-option>
+                          <mat-option value="Union Libre">Union Libre</mat-option>
+                          <mat-option value="Viud@">Viud@</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput formControlName="telefono">
+                        <mat-error *ngIf="crearPacientesForm.controls['telefono'].invalid">{{getPhoneErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-error *ngIf="crearPacientesForm.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Dirección</mat-label>
+                        <input matInput formControlName="domicilio">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>RFC</mat-label>
+                        <input matInput formControlName="rfc">
+                    </mat-form-field>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-12">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Motivo de Consulta</mat-label>
+                        <input matInput formControlName="motivo_de_consulta">
+                    </mat-form-field>
+                </div>
+            </section>
+            <p class="emergency-contact-data">Contacto de emergencia</p>
+            <section class="row">
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre_contacto_emergencia">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Relación</mat-label>
+                        <input matInput formControlName="relacion_contacto_emergencia">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width">
+                        <mat-label>Teléfono</mat-label>
+                        <input matInput formControlName="telefono_contacto_emergencia">
+                    </mat-form-field>
+                </div>
+            </section>
+        </section>
+        <section id="eredofamiliares">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title class="section_title">
+                        Antecedentes Heredofamiliares
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <section class="row">
+                        <div class="col-12">
+                            <mat-form-field class="full-width">
+                                <mat-label></mat-label>
+                                <textarea formControlName="antecedentes_heredofamiliares" matInput placeholder="Diabetes, cardiovasculares, etc..." rows="2"></textarea>
+                              </mat-form-field>
+                        </div>
+                    </section>
+                  </mat-expansion-panel>
+            </mat-accordion>
+        </section>
+        <section id="personalesPatologicos" formGroupName="antecedentes_personales_patologicos">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title class="section_title">
+                        Antecedentes Personales Patologicos
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <!--TODO Content here-->
+                    <section class="row" formGroupName="bajoTratamientoMedico">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">¿Esta usted bajo algún tratamiento medico?</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="intervencionQuirurgica">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">¿Le han practicado alguna intervención quirúrgica?</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="consumeDrogas">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">¿Ha consumido o consume drogas?</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="problemasPresion">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">¿Problemas de presión arterial?</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="hepatitis">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Hepatitis</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="vih">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">VIH</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="ets">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Enfermedad de transmisión sexual</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="problemaCorazon">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Problemas de corazón</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="fiebreReumatica">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Fiebre Reumatica</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="asma">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Asma</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="diabetes">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Diabetes</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="ulceraGastrica">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Ulcera gástrica</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="tiroides">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Tiroides</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="alergias">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Alergia (Penicilina, anestesia, aspirina, alimentos, etc.)</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="epilepsia">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Epilepsia</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="gastritis">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Gastritis</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                    <section class="row" formGroupName="embarazo">
+                        <div class="col-6">
+                            <div class="row personales-patologicos-control">
+                                <div class="col-6">
+                                    <label class="personales-patologicos-label">Embarazo</label>
+                                </div>
+                                <div class="col-6">
+                                    <mat-radio-group aria-label="Select an option" formControlName="respuesta">
+                                        <mat-radio-button value="Si">Si</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field  class="full-width">
+                                <mat-label>Observaciones</mat-label>
+                                <input matInput formControlName="comentarios">
+                            </mat-form-field>
+                        </div>
+                    </section>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </section>
+        <section class="crear-pacientes-actions">
+            <div class="row">
+                <div class="col-12 custom-actions">
+                    <button *ngIf="!pacienteId" mat-fab extended class="action-button-confirm  mat-elevation-z0 mr-3" [disableRipple]="true" (click)="crearPaciente()">
+                        Guardar
+                    </button>
+                    <button *ngIf="pacienteId" mat-fab extended class="action-button-confirm  mat-elevation-z0 mr-3" [disableRipple]="true" (click)="actualizarPaciente()">
+                        Actualizar
+                    </button>
+                    <button mat-fab extended class="action-button-cancel  mat-elevation-z0" [disableRipple]="true">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</form>

@@ -79,30 +79,6 @@
   color: rgb(111, 28, 28) !important;
 }
 
-/* //Top bottom border, if label is inside 
-::ng-deep.mdc-notched-outline__notch {
-  border-top: 2px solid red !important;
-  border-bottom: 2px solid red !important;
-}
-
-//Top bottom border, if label is notched
-::ng-deep.mdc-notched-outline--notched {
-    ::ng-deep.mdc-notched-outline__notch {
-       border-top: none !important;
-       border-bottom: 2px solid red !important;
-    }
-}
-//Left border with edges
-::ng-deep.mdc-notched-outline__leading {
-  border: 2px solid red !important;
-  border-right: none !important;
-}
-//Right border with edges
-::ng-deep.mdc-notched-outline__trailing {
-  border: 2px solid red !important;
-  border-left: none !important;
-} */
-
 .mat-form-field {
   background-color: #af2626; /* Reemplaza este valor con el color de fondo que desees */
 }
@@ -213,4 +189,22 @@ table {
 .custom-paginator{
   color: $main--blue;
   margin-bottom: 35px;
+}
+
+.dashboard_list_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard_list_actons{
+  display: flex;
+  align-items: center;
+}
+
+.dashboard_logout_icon{
+  width: 20px;
+  height: auto;
+  margin: 10px;
+  cursor: pointer;
 }

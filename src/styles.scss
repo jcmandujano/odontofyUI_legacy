@@ -40,6 +40,8 @@ h1{
 }
 
 
+
+//JCMV to style inputs as design required DO NOT REMOE
 .mat-mdc-text-field-wrapper {
     background-color: #fff !important;
 }
@@ -55,6 +57,7 @@ h1{
 .mdc-text-field--focused {
     background-color: #fff !important;
 }
+//JCMV to style inputs as design required DO NOT REMOE
 
 .progress-loader {
     display: flex;
@@ -64,7 +67,8 @@ h1{
     position: fixed;
     right: 0;
     left: 0;
-    top: 0px;
+    top: 64px;
     bottom: 0;
     z-index: 9999999;
   }
+

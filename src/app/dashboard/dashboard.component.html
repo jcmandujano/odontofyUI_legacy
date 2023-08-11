@@ -18,7 +18,7 @@
 <div class="row dashboard-title">
     <!--here goes name and settings-->
     <div class="col-6">
-        <h1 class="dashboard-title-name">Nombre Apellido</h1>
+        <h1 class="dashboard-title-name">{{ currentUser.nombre + ' ' + currentUser.apellido_paterno + ' '+ currentUser.apellido_materno| titlecase}}</h1>
         <p class="welcome-letter">Bienvenido ¿Que necesitas hacer hoy?</p>
     </div>
     
