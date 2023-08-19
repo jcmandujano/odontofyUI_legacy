@@ -24,6 +24,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   {   path: 'login',   component: LoginComponent   },
@@ -46,6 +47,7 @@ const routes: Routes = [
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     FontAwesomeModule,
     HttpClientModule,

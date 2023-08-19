@@ -66,13 +66,26 @@ export class SignUpComponent implements OnInit {
       this.spinner = true
       this.authService.register(this.buildSignupData(this.signupForm.value)).subscribe(data=>{
         this.userdata = data;
-        this.storeSession(data)
+        const pass = this.signupForm.value.password || ''
+        console.log('DATA', data)
+        this.doLogin(data.user.email, pass)
         this.spinner = false
-        this.router.navigate(['/dashboard'])
       })
     }else{
       this.validateForm()
     }
+  }
+
+  doLogin(username: string, password: string){
+    this.authService.login(username, password).subscribe(data=>{
+      this.userdata = data;
+      console.log('USERDATA', data)
+      this.storeSession(data)
+      this.router.navigate(['/dashboard'])
+    },(error)=>{
+      console.log('ERRORRRRR', error.error.error.message)
+      this.openSnackbar(`Ocurrio un error: ${error.error.error.message}`, 'Ok')
+    })
   }
 
   storeSession(userData:any){

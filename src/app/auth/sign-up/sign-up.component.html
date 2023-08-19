@@ -1,4 +1,6 @@
-<div class="progress-loader"><mat-progress-spinner class="loader" [mode]="'indeterminate'"> </mat-progress-spinner>`</div>
+<div class="progress-loader" *ngIf="spinner">
+  <mat-progress-spinner [mode]="'indeterminate'"> </mat-progress-spinner>
+</div>
 <main>
     <section class="login_row">
         <section class="login_form_column">
