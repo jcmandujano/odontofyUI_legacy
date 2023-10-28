@@ -65,11 +65,13 @@ export class CrearPacientesComponent implements OnInit {
   }
 
   patchValuesToEdit(paciente: Paciente){
+    console.log('QUE FECHA TRAES', this.calculaEdad(new Date(paciente.fecha_nacimiento).toISOString()))
      this.crearPacientesForm.patchValue({
       nombre: paciente.nombre,
       apellido_paterno: paciente.apellido_paterno,
       apellido_materno: paciente.apellido_materno,
       fecha_nacimiento: paciente.fecha_nacimiento,
+      edad:  this.calculaEdad(new Date(paciente.fecha_nacimiento).toISOString()),
       genero: paciente.genero,
       ocupacion: paciente.ocupacion,
       estado_civil: paciente.estado_civil,

@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Eliminar Paciente</h1>
+<h1 mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>
-    ¿Seguro que quieres eliminar a este paciente?
+    {{data.message}}
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close [disableRipple]="true" color="warn">No</button>

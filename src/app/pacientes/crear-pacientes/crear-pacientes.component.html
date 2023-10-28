@@ -42,12 +42,6 @@
             </section>
             <section class="row">
                 <div class="col-4">
-                    <mat-form-field  class="full-width" >
-                        <mat-label>Edad</mat-label>
-                        <input matInput formControlName="edad">
-                    </mat-form-field>
-                </div>
-                <div class="col-4">
                     <mat-form-field class="full-width">
                         <mat-label>Fecha de Nacimiento</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" (dateInput)="onDateChange($event)" (dateChange)="onDateChange($event)">
@@ -55,6 +49,12 @@
                         <mat-error *ngIf="crearPacientesForm.controls['fecha_nacimiento'].invalid">Debes ingresar la fecha de nacimiento</mat-error>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field  class="full-width" >
+                        <mat-label>Edad</mat-label>
+                        <input matInput formControlName="edad">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
