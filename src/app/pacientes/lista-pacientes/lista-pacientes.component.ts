@@ -10,26 +10,6 @@ import { Paciente } from 'src/app/services/pacientes/pacientes.model';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.services';
 import { ConfirmDialogComponent } from '../shared/confirm.dialog/confirm.dialog.component';
 
-export interface PeriodicElement {
-  position: string;
-  name: string;
-  registro: string;
-  adeudo: number;
-  proximaCita: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: '00001', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00002', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00003', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00004', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00005', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00006', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00007', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00008', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00009', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-  {position: '00010', name: 'Nombre del Paciente', registro: '00/00/0000', adeudo: 200, proximaCita: '00/00/0000'},
-];
 @Component({
   selector: 'app-lista-pacientes',
   templateUrl: './lista-pacientes.component.html',
@@ -38,7 +18,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ListaPacientesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombre', 'ingreso', 'adeudo', 'prox_cita', 'actions'];
   dataSource = new MatTableDataSource<Paciente>();
-  selection = new SelectionModel<Paciente>(true, []);
   spinner= false
   pacientesList: Paciente[] = []
   paginator: any
@@ -77,7 +56,6 @@ export class ListaPacientesComponent implements OnInit {
       this.pacientesList = data.data
       this.paginator = data.meta
       this.dataSource.data = this.pacientesList
-      console.log('List pacientes', this.pacientesList)
       this.spinner = false
     },(error)=>{
       this.spinner = false
@@ -92,31 +70,6 @@ export class ListaPacientesComponent implements OnInit {
         .body.style.backgroundColor = '#ffffff';
 }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  toggleAllRows() {
-    if (this.isAllSelected()) {
-      this.selection.clear();
-      return;
-    }
-
-    this.selection.select(...this.dataSource.data);
-  }
-
-  /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Paciente): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
-  }
-
   //send to create new patient
   crearPaciente(){
     this.router.navigate(['/crea-pacientes'])
@@ -126,14 +79,19 @@ export class ListaPacientesComponent implements OnInit {
     this.router.navigate(['/crea-pacientes', { id: pacienteId  }])
   }
 
+  goToExpediente(pacienteId: any){
+    this.router.navigate(['/expediente', { id: pacienteId  }])
+  }
+
   eliminaPaciente(pacienteId: any){
-    console.log('ELIMINA PACIENTE')
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      //data: {name: this.name, animal: this.animal},
+      data: {
+        title: 'Eliminar Paciente',
+        message: '¿Seguro que quieres eliminar a este paciente?'
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       if(result){
         this.pacientesService.eliminaPaciente(pacienteId).subscribe(data=>{
           this.openSnackbar('Se elimino la informacion correctamente', 'Ok')

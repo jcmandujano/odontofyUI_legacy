@@ -31,16 +31,26 @@ import { registerLocaleData } from '@angular/common';
 import {LOCALE_ID } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './shared/confirm.dialog/confirm.dialog.component';
+import { ExpedientePacienteComponent } from './expediente-paciente/expediente-paciente.component';
+import { NotasEvolucionComponent } from './notas-evolucion/notas-evolucion.component';
+import { NewNotaEvolDialogComponent } from './shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
 
 
 registerLocaleData(localeEs, 'es');
 const routes: Routes = [
+  {   path: 'expediente',   component: ExpedientePacienteComponent   },
   {   path: 'crea-pacientes',   component: CrearPacientesComponent   },
-  {   path: 'lista-pacientes',   component: ListaPacientesComponent   }
+  {   path: 'lista-pacientes',   component: ListaPacientesComponent   },
+  {   path: 'notas-evolucion',   component: NotasEvolucionComponent   },
 ];
 
 @NgModule({
-  declarations: [CrearPacientesComponent, ListaPacientesComponent, NavBarComponent, ConfirmDialogComponent],
+  declarations: [CrearPacientesComponent, 
+    ListaPacientesComponent, 
+    NavBarComponent, 
+    ConfirmDialogComponent, 
+    ExpedientePacienteComponent, 
+    NotasEvolucionComponent, NewNotaEvolDialogComponent],
   imports: [
     CommonModule,
     FormsModule,

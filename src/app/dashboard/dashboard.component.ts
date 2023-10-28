@@ -20,6 +20,30 @@ export class DashboardComponent implements OnInit {
   private matIconRegistry: MatIconRegistry,
   private domSanitizer: DomSanitizer) {
     this.matIconRegistry.addSvgIcon(
+      "agenda",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_agenda.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "finanzas",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_finanzas.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "pacientes",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_user.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "concentimientos",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/vepet_concentimientos.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "ficha_id",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/vepet_ficha_identificacion.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "odontograma",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/vepet_odontograma.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
       "settings",
       this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/settings_dashboard.svg")
     );
@@ -28,12 +52,12 @@ export class DashboardComponent implements OnInit {
       this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/logout_dashboard.svg")
     );
     this.matIconRegistry.addSvgIcon(
-      "agenda",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_agenda.svg")
+      "recetas",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_recetas.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "agendaDot",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/agenda_dot.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_agenda.svg")
     );
     this.matIconRegistry.addSvgIcon(
       "iniciaCita",
@@ -46,18 +70,6 @@ export class DashboardComponent implements OnInit {
     this.matIconRegistry.addSvgIcon(
       "eliminaCita",
       this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_delete_cita.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      "finanzas",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_finanzas.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      "recetas",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_recetas.svg")
-    );
-    this.matIconRegistry.addSvgIcon(
-      "pacientes",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../../assets/icons/dashboard_user.svg")
     );
 
     //usado para iterar n veces la lista de citas en la agenda
@@ -80,5 +92,10 @@ export class DashboardComponent implements OnInit {
   crearPaciente(){
     this.router.navigate(['crea-pacientes'])
   }
+
+  listadePacientes(){
+    this.router.navigate(['lista-pacientes'])
+  }
+
 
 }
