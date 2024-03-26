@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
   }
 
   storeSession(userData:any){
-    this.sessionService.saveToken(userData.jwt)
+    this.sessionService.saveToken(userData.token)
     this.sessionService.saveUser(userData.user)
   }
 

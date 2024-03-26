@@ -11,12 +11,11 @@
 }
 
 .extra_info_column {
+    flex: 40%;
     background-image: url('../../../assets/img/dummy.jpg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    flex: 40%;
-    //padding: 10px;
-    height: 100vh; /* Should be removed. Only for demonstration */
+    height: 100vh; 
 }
 
 h1{
@@ -28,14 +27,10 @@ h1{
 }
 
 .login_form_container{
-    position: absolute;
-    left: 30%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    padding: 10px;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    width: 25%;
+    height: 80%;
 }
 
 .login_form_control{
@@ -82,8 +77,8 @@ mat-label {
 }
 
 .login_form_logo{
-    padding: 15px;
-    margin-bottom: 120px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .login_form_container_welcome{
@@ -91,14 +86,14 @@ mat-label {
 }
 
 .login_form_container_form{
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .button{
     margin-bottom: 40px;
 }
 .login_form_containe_legal{
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .subtitle{

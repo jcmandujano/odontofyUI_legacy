@@ -20,16 +20,16 @@
 }
 
 .login_form_container{
-    overflow: auto;
-    position: fixed;
-    overflow-x: hidden;
-    height: 600px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 40px;
 }
 
-.login_form_container::-webkit-scrollbar {
-    display: none;
-  }
-
+.custom{
+    overflow: auto;
+    height: 100%;
+}
 
 h1{
     font-weight: 700;
@@ -39,19 +39,7 @@ h1{
     font-size: 45px;
 }
 
-.login_form_container{
-    position: absolute;
-    left: 30%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    text-align: center;
-    width: 30%;
-}
-
 .login_form_control{
-    margin-bottom: 15px;
     width: 100%;
 }
 
@@ -94,8 +82,8 @@ mat-label {
 }
 
 .login_form_logo{
-    padding: 15px;
-    margin-bottom: 120px;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .login_form_container_welcome{
@@ -103,14 +91,14 @@ mat-label {
 }
 
 .login_form_container_form{
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .button{
     margin-bottom: 40px;
 }
 .login_form_containe_legal{
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .subtitle{
