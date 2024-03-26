@@ -77,7 +77,7 @@
                 <div class="custom_icon">
                     <mat-icon color="primary" svgIcon="odontograma" class="dashboard_agenda_icon"></mat-icon>
                 </div>
-                <div class="custom_title">
+                <div class="custom_title" (click)="goToOdontograma()">
                     <p class="custom_card_title">Odontográma</p>
                     <span class="custom-card-subtitle">Consulta y modifica el odontográma de este paciente</span>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="custom_icon">
                     <mat-icon svgIcon="finanzas" class="dashboard_agenda_icon"></mat-icon>
                 </div>
-                <div class="custom_title">
+                <div class="custom_title" (click)="goToHistorialPagos()">
                     <p class="custom_card_title">Historial de pagos</p>
                     <span class="custom-card-subtitle">Resumen de pagos del usuario</span>
                 </div>

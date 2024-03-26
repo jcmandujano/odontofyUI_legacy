@@ -34,6 +34,8 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog/confirm.dialog.c
 import { ExpedientePacienteComponent } from './expediente-paciente/expediente-paciente.component';
 import { NotasEvolucionComponent } from './notas-evolucion/notas-evolucion.component';
 import { NewNotaEvolDialogComponent } from './shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
+import { HistorialPagosComponent } from './historial-pagos/historial-pagos.component';
+import { OdontogramaComponent } from './odontograma/odontograma.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -42,6 +44,8 @@ const routes: Routes = [
   {   path: 'crea-pacientes',   component: CrearPacientesComponent   },
   {   path: 'lista-pacientes',   component: ListaPacientesComponent   },
   {   path: 'notas-evolucion',   component: NotasEvolucionComponent   },
+  {   path: 'historial-pagos',   component: HistorialPagosComponent   },
+  {   path: 'odontograma',   component: OdontogramaComponent   }
 ];
 
 @NgModule({
@@ -50,7 +54,7 @@ const routes: Routes = [
     NavBarComponent, 
     ConfirmDialogComponent, 
     ExpedientePacienteComponent, 
-    NotasEvolucionComponent, NewNotaEvolDialogComponent],
+    NotasEvolucionComponent, NewNotaEvolDialogComponent, HistorialPagosComponent, OdontogramaComponent],
   imports: [
     CommonModule,
     FormsModule,

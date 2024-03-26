@@ -93,7 +93,7 @@ export class ExpedientePacienteComponent {
     }
 
     goToHistorialPagos(){
-      console.log('No Implementado aun')
+      this.router.navigate(['historial-pagos', { id: this.pacienteId  }])
       //this.router.navigate([''])
     }
 
@@ -103,9 +103,11 @@ export class ExpedientePacienteComponent {
     }
 
     goToOdontograma(){
-      console.log('No Implementado aun')
+      this.router.navigate(['odontograma', { id: this.pacienteId  }])
       //this.router.navigate([''])
     }
+
+
 
     openSnackbar(message: string, action: string) {
       this.snackBar.open(message, action, {

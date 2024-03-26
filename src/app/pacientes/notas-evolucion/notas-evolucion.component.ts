@@ -125,8 +125,8 @@ export class NotasEvolucionComponent {
 
   editarNotaDialog(nota: NotaEvolucion){
     const dialogRef = this.dialog.open(NewNotaEvolDialogComponent, {
-      width: '30vw',
-      height: '40vh',
+      width: '40vw',
+      height: '50vh',
       data: nota
     });
 
@@ -168,8 +168,8 @@ export class NotasEvolucionComponent {
 
   creaNotaDialog(){
     const dialogRef = this.dialog.open(NewNotaEvolDialogComponent, {
-      width: '30vw',
-      height: '40vh',
+      width: '40vw',
+      height: '50vh',
       panelClass: 'custom-dialog-container' 
     });
 

@@ -13,8 +13,8 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + '/auth/local', {
-      identifier: username,
+    return this.http.post(AUTH_API + '/auth/login', {
+      username: username,
       password: password
     }, httpOptions);
   }
