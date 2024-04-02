@@ -1,11 +1,10 @@
 export class NotaEvolucion {
     id!: number
-    nota!: string
-    fecha_creacion!: Date
-    paciente!: any
+    note!: string
+    createdAt!: string
+    patient_id!: number
 
     constructor(){
-        this.nota = ''
-        this.fecha_creacion = new Date()
+        this.note = ''
     }
 }

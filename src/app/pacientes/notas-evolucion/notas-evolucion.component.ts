@@ -63,7 +63,7 @@ export class NotasEvolucionComponent {
   listarNotas(){
     this.spinner = true
     this.notasService.listarNotas(this.pacienteId).subscribe(data=>{
-      this.notasList = data
+      this.notasList = data.notes
       this.dataSource = this.notasList
       
       this.spinner = false
@@ -89,11 +89,11 @@ export class NotasEvolucionComponent {
 
   createNota(response: any){
     const newNota = new NotaEvolucion()
-    newNota.paciente = this.pacienteId
-    newNota.nota = response.noteContent
-    newNota.fecha_creacion = response.creationDate
+    newNota.patient_id = this.pacienteId
+    newNota.note = response.noteContent
+    console.log('CREANDO UNA NOTA', newNota)
     this.spinner = true
-    this.notasService.crearNota(newNota).subscribe(data=>{
+    this.notasService.crearNota(this.pacienteId, newNota).subscribe(data=>{
       this.listarNotas()
       this.spinner = false
     },(error)=>{
@@ -105,11 +105,10 @@ export class NotasEvolucionComponent {
 
   editarNota(idNota: any, response: any){
     const newNota = new NotaEvolucion()
-    newNota.paciente = this.pacienteId
-    newNota.nota = response.noteContent
-    newNota.fecha_creacion = response.creationDate
+    newNota.patient_id = this.pacienteId
+    newNota.note = response.noteContent
     this.spinner = true
-     this.notasService.actualizaNota(idNota, newNota).subscribe(data=>{
+     this.notasService.actualizaNota(this.pacienteId, idNota, newNota).subscribe(data=>{
       this.listarNotas()
       this.spinner = false
     },(error)=>{
@@ -154,7 +153,7 @@ export class NotasEvolucionComponent {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.spinner = true
-        this.notasService.eliminaNota(id).subscribe(data=>{
+        this.notasService.eliminaNota(this.pacienteId, id).subscribe(data=>{
           this.listarNotas()
           this.spinner = false
         },(error)=>{

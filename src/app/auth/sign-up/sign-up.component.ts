@@ -8,16 +8,14 @@ import { User } from '../../services/user/user.model'
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface signUpUserData{
-  nombre?: string
-  apellido_paterno?: string
-  apellido_materno?: string
-  fecha_nacimiento?: Date
-  genero?: string
+  name?: string
+  middle_name?: string
+  last_name?: string
+  date_of_birth?: Date
+  phone?: string
+  avatar?: string
   email?: string 
-  username?:string
   password?:string
-  telefono?: string
-  biografia?: string
 }
 
 @Component({
@@ -33,7 +31,6 @@ export class SignUpComponent implements OnInit {
   userdata = new User;
   spinner= false
   emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  userData = new User;
   signupData: signUpUserData | undefined
   signupForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -78,8 +75,8 @@ export class SignUpComponent implements OnInit {
 
   doLogin(username: string, password: string){
     this.authService.login(username, password).subscribe(data=>{
-      this.userdata = data;
-      console.log('USERDATA', data)
+      this.userdata = data.user;
+      console.log('USERDATA', data.user)
       this.storeSession(data)
       this.router.navigate(['/dashboard'])
     },(error)=>{
@@ -124,14 +121,14 @@ export class SignUpComponent implements OnInit {
 
   buildSignupData(formData: any): signUpUserData{
     const data: signUpUserData = {
-      nombre: formData.nombre,
-      apellido_paterno: formData.apellido_pat,
-      apellido_materno: formData.apellido_mat,
-      fecha_nacimiento: formData.fechaNac,
+      name: formData.nombre,
+      middle_name: formData.apellido_pat,
+      last_name: formData.apellido_mat,
+      date_of_birth: formData.fechaNac,
+      phone: formData.telefono,
+      avatar: '',
       email: formData.email,
-      username: formData.email,
       password: formData.password,
-      telefono: formData.telefono,
     }
     return data;
   }

@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
     this.loginForm.markAllAsTouched()
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe(data=>{
-        this.userdata = data;
-        console.log('USERDATA', data)
+        this.userdata = data.user;
         this.storeSession(data)
         this.router.navigate(['/dashboard'])
       },(error)=>{
