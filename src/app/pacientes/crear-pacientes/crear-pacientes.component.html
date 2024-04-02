@@ -21,22 +21,22 @@
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="nombre">
-                        <mat-error *ngIf="crearPacientesForm.controls['nombre'].invalid">Debes ingresar el numbre</mat-error>
+                        <input matInput formControlName="name">
+                        <mat-error *ngIf="crearPacientesForm.controls['name'].invalid">Debes ingresar el numbre</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Apellido Paterno</mat-label>
-                        <input matInput formControlName="apellido_paterno">
-                        <mat-error *ngIf="crearPacientesForm.controls['apellido_paterno'].invalid">Debes ingresar el apellido paterno</mat-error>
+                        <input matInput formControlName="middle_name">
+                        <mat-error *ngIf="crearPacientesForm.controls['middle_name'].invalid">Debes ingresar el apellido paterno</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Apellido Materno</mat-label>
-                        <input matInput formControlName="apellido_materno">
-                        <mat-error *ngIf="crearPacientesForm.controls['apellido_materno'].invalid">Debes ingresar el apellido materno</mat-error>
+                        <input matInput formControlName="last_name">
+                        <mat-error *ngIf="crearPacientesForm.controls['last_name'].invalid">Debes ingresar el apellido materno</mat-error>
                     </mat-form-field>
                 </div>
             </section>
@@ -44,9 +44,9 @@
                 <div class="col-4">
                     <mat-form-field class="full-width">
                         <mat-label>Fecha de Nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" (dateInput)="onDateChange($event)" (dateChange)="onDateChange($event)">
+                        <input matInput [matDatepicker]="picker" formControlName="date_of_birth" (dateInput)="onDateChange($event)" (dateChange)="onDateChange($event)">
                         <mat-hint>DD/MM/YYYY</mat-hint>
-                        <mat-error *ngIf="crearPacientesForm.controls['fecha_nacimiento'].invalid">Debes ingresar la fecha de nacimiento</mat-error>
+                        <mat-error *ngIf="crearPacientesForm.controls['date_of_birth'].invalid">Debes ingresar la fecha de nacimiento</mat-error>
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -54,16 +54,16 @@
                 <div class="col-4">
                     <mat-form-field  class="full-width" >
                         <mat-label>Edad</mat-label>
-                        <input matInput formControlName="edad">
+                        <input matInput formControlName="age">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field class="full-width">
                         <mat-label>Sexo</mat-label>
-                        <mat-select matNativeControl formControlName="genero">
-                          <mat-option value="Masculino">Masculino</mat-option>
-                          <mat-option value="Femenino">Femenino</mat-option>
-                          <mat-option value="No Especifica">Indefinido</mat-option>
+                        <mat-select matNativeControl formControlName="gender">
+                          <mat-option value="MALE">Masculino</mat-option>
+                          <mat-option value="FEMALE">Femenino</mat-option>
+                          <mat-option value="OTHER">Indefinido</mat-option>
                         </mat-select>
                       </mat-form-field>
                 </div>
@@ -72,28 +72,28 @@
                 <div class="col-4">
                     <mat-form-field  class="full-width" >
                         <mat-label>Ocupación</mat-label>
-                        <input matInput formControlName="ocupacion">
+                        <input matInput formControlName="occupation">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field class="full-width">
                         <mat-label>Estado Civil</mat-label>
-                        <mat-select matNativeControl formControlName="estado_civil">
-                          <mat-option value="Casad@">Casad@</mat-option>
-                          <mat-option value="Divorciad@">Divorciad@</mat-option>
-                          <mat-option value="No aplica">No aplica</mat-option>
-                          <mat-option value="Separad@">Separad@</mat-option>
-                          <mat-option value="Solter@">Solter@</mat-option>
-                          <mat-option value="Union Libre">Union Libre</mat-option>
-                          <mat-option value="Viud@">Viud@</mat-option>
+                        <mat-select matNativeControl formControlName="marital_status">
+                          <mat-option value="MARRIED">Casad@</mat-option>
+                          <mat-option value="DIVORCED">Divorciad@</mat-option>
+                          <mat-option value="NA">No aplica</mat-option>
+                          <mat-option value="SEPARATED">Separad@</mat-option>
+                          <mat-option value="SINGLE">Solter@</mat-option>
+                          <mat-option value="COMMON LAW">Union Libre</mat-option>
+                          <mat-option value="WIDOWED">Viud@</mat-option>
                         </mat-select>
                       </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Teléfono</mat-label>
-                        <input matInput formControlName="telefono">
-                        <mat-error *ngIf="crearPacientesForm.controls['telefono'].invalid">{{getPhoneErrorMessage()}}</mat-error>
+                        <input matInput formControlName="phone">
+                        <mat-error *ngIf="crearPacientesForm.controls['phone'].invalid">{{getPhoneErrorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
             </section>
@@ -108,7 +108,7 @@
                 <div class="col-4">
                     <mat-form-field  class="full-width" >
                         <mat-label>Dirección</mat-label>
-                        <input matInput formControlName="domicilio">
+                        <input matInput formControlName="address">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
@@ -122,7 +122,7 @@
                 <div class="col-12">
                     <mat-form-field  class="full-width" >
                         <mat-label>Motivo de Consulta</mat-label>
-                        <input matInput formControlName="motivo_de_consulta">
+                        <input matInput formControlName="reason_for_consultation">
                     </mat-form-field>
                 </div>
             </section>
@@ -131,19 +131,19 @@
                 <div class="col-4">
                     <mat-form-field  class="full-width" >
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="nombre_contacto_emergencia">
+                        <input matInput formControlName="emergency_contact_name">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Relación</mat-label>
-                        <input matInput formControlName="relacion_contacto_emergencia">
+                        <input matInput formControlName="emergency_contact_relationship">
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field  class="full-width">
                         <mat-label>Teléfono</mat-label>
-                        <input matInput formControlName="telefono_contacto_emergencia">
+                        <input matInput formControlName="emergency_contact_phone">
                     </mat-form-field>
                 </div>
             </section>
@@ -160,14 +160,14 @@
                         <div class="col-12">
                             <mat-form-field class="full-width">
                                 <mat-label></mat-label>
-                                <textarea formControlName="antecedentes_heredofamiliares" matInput placeholder="Diabetes, cardiovasculares, etc..." rows="2"></textarea>
+                                <textarea formControlName="family_medical_history" matInput placeholder="Diabetes, cardiovasculares, etc..." rows="2"></textarea>
                               </mat-form-field>
                         </div>
                     </section>
                   </mat-expansion-panel>
             </mat-accordion>
         </section>
-        <section id="personalesPatologicos" formGroupName="antecedentes_personales_patologicos">
+        <section id="personalesPatologicos" formGroupName="personal_medical_history">
             <mat-accordion>
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>

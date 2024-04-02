@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NotaEvolucion } from 'src/app/services/notas-evolucion/notas.evolucion.model';
 
 @Component({
   selector: 'app-new.nota.evol.dialog',
@@ -11,11 +12,11 @@ export class NewNotaEvolDialogComponent {
   noteContent: string
   constructor(
     public dialogRef: MatDialogRef<NewNotaEvolDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: NotaEvolucion,
   ) {
     if(data){
-      this.creationDate = new Date(this.isoToDate(data.fecha_creacion))
-      this.noteContent = data.nota
+      this.creationDate = new Date(data.createdAt)
+      this.noteContent = data.note
     }else{
       this.creationDate = new Date()
     }

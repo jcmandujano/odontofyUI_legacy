@@ -20,6 +20,6 @@ export class AuthService {
   }
   
   register(payload:any): Observable<any> {
-    return this.http.post(AUTH_API + '/auth/local/register',payload, httpOptions);
+    return this.http.post(AUTH_API + '/auth/register',payload, httpOptions);
   }
 }

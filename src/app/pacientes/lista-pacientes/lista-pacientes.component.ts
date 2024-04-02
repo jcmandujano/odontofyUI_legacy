@@ -53,8 +53,9 @@ export class ListaPacientesComponent implements OnInit {
   recuperaPacientes(){
     this.spinner = true
     this.pacientesService.listarPacientes().subscribe(data=>{
-      this.pacientesList = data.data
-      this.paginator = data.meta
+      this.pacientesList = data.patients
+      //JCMV hay que añadir paginacion a este servicio
+      //this.paginator = data.meta
       this.dataSource.data = this.pacientesList
       this.spinner = false
     },(error)=>{

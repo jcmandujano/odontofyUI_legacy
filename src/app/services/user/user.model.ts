@@ -1,40 +1,13 @@
-class Profile {
-    public id!: number
-    public username!: string
-    public email!: string
-    public provider!: string
-    public confirmed!: boolean
-    public blocked!: boolean
-    public createdAt!: Date
-    public updatedAt!: Date
-    public nombre!: string
-    public apellido_paterno!: string
-    public apellido_materno!: string
-    public fecha_nacimiento!: Date
-    public no_cedula!: string
-    public especialidad!: string
-    public cedula_especialidad!: string
-    public biografia!: string
-
-}
-
 export class User {
     public id!: number
-    public username!: string
-    public email!: string
-    public provider!: string
-    public confirmed!: boolean
-    public blocked!: boolean
-    public createdAt!: Date
-    public updatedAt!: Date
-    public nombre!: string
-    public apellido_paterno!: string
-    public apellido_materno!: string
-    public fecha_nacimiento!: Date
-    public no_cedula!: string
-    public especialidad!: string
-    public cedula_especialidad!: string
-    public biografia!: string
+    public name?: string
+    public middle_name?: string
+    public last_name?: string
+    public date_of_birth?: Date
+    public phone?: string
+    public avatar?: string
+    public email?: string 
+    public password?:string
 
     /* static fromJson(json: any): User{
         const user = new User()
