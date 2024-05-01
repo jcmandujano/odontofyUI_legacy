@@ -36,6 +36,7 @@ import { NotasEvolucionComponent } from './notas-evolucion/notas-evolucion.compo
 import { NewNotaEvolDialogComponent } from './shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
 import { HistorialPagosComponent } from './historial-pagos/historial-pagos.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
+import { PaymentDialogComponent } from './shared/payment.dialog/payment.dialog.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -54,7 +55,7 @@ const routes: Routes = [
     NavBarComponent, 
     ConfirmDialogComponent, 
     ExpedientePacienteComponent, 
-    NotasEvolucionComponent, NewNotaEvolDialogComponent, HistorialPagosComponent, OdontogramaComponent],
+    NotasEvolucionComponent, NewNotaEvolDialogComponent, HistorialPagosComponent, OdontogramaComponent, PaymentDialogComponent],
   imports: [
     CommonModule,
     FormsModule,

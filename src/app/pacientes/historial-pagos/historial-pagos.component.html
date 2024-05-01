@@ -63,7 +63,7 @@
                     <td mat-cell *matCellDef="let element" class="nextdate-content-column"> 
                         <div class="dashboard_list_container">
                             <div class="dashboard_list_actons">
-                                <mat-icon class="dashboard_logout_icon" svgIcon="editaCita" ></mat-icon>
+                                <mat-icon class="dashboard_logout_icon" svgIcon="editaCita" (click)="openPaymentDialog()"></mat-icon>
                                 <mat-icon class="dashboard_logout_icon" svgIcon="eliminaCita"></mat-icon>
                             </div>
                         </div>

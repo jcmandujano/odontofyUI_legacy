@@ -1,4 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentDialogComponent } from '../shared/payment.dialog/payment.dialog.component';
+
 export interface Payment {
   id: string;
   fechaPago: string;
@@ -28,9 +31,22 @@ const ELEMENT_DATA: Payment[] = [
 export class HistorialPagosComponent {
   displayedColumns: string[] = ['id', 'fecha', 'total', 'ingreso', 'adeudo', 'actions'];
   dataSource = ELEMENT_DATA;
-  constructor(private elementRef: ElementRef){}
+  constructor(private elementRef: ElementRef,
+    public dialog: MatDialog
+  ){}
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#ffffff';
+  }
+
+  openPaymentDialog(){
+    console.log('ABRIMOS EL DIALOGO')
+    const dialogRef = this.dialog.open(PaymentDialogComponent,{
+      width: '50vw'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
