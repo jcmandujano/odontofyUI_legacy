@@ -8,6 +8,14 @@
   color: $primary--blue;
 }
 
+
+.mat-mdc-header-row .mat-mdc-header-cell{
+  font-family: 'Roboto Condensed';
+  color: $main--blue;
+  border: 1px solid #C0D9FF;
+}
+
+
 .mat-mdc-row .mat-mdc-cell {
   border-bottom: 1px solid #C0D9FF;
 }
@@ -19,6 +27,27 @@ table {
 .payment-dialog-resume-controls{
     width: 40%;
 }
+
+.quality-header-column{
+  width: 8%;
+}
+
+
+.mat-row {
+  height: auto !important;
+}
+
+.mdc-data-table__cell{
+  padding: 4px 4px 4px 4px !important; 
+}
+
+.add_icon{
+  width: 20px;
+  height: auto;
+  margin: 10px;
+  cursor: pointer;
+}
+
 //JCMV to style inputs as design required DO NOT REMOE
 :host ::ng-deep .mdc-text-field--focused {
     background-color: transparent;
@@ -44,3 +73,4 @@ table {
     border-bottom-color: #6CA6FE;
   }
   //JCMV to style inputs as design required DO NOT REMOE
+  
