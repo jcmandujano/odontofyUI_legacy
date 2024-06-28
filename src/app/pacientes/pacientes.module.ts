@@ -37,9 +37,12 @@ import { NewNotaEvolDialogComponent } from './shared/new.nota.evol.dialog/new.no
 import { HistorialPagosComponent } from './historial-pagos/historial-pagos.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { PaymentDialogComponent } from './shared/payment.dialog/payment.dialog.component';
-
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { DatePipe } from '@angular/common';
+import { CurrencyFormatDirectiveDirective } from '../directives/currency-format-directive.directive';
 
 registerLocaleData(localeEs, 'es');
+
 const routes: Routes = [
   {   path: 'expediente',   component: ExpedientePacienteComponent   },
   {   path: 'crea-pacientes',   component: CrearPacientesComponent   },
@@ -50,18 +53,25 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CrearPacientesComponent, 
+  declarations: [
+    CrearPacientesComponent, 
     ListaPacientesComponent, 
     NavBarComponent, 
     ConfirmDialogComponent, 
+    CurrencyFormatDirectiveDirective,
     ExpedientePacienteComponent, 
-    NotasEvolucionComponent, NewNotaEvolDialogComponent, HistorialPagosComponent, OdontogramaComponent, PaymentDialogComponent],
+    NotasEvolucionComponent, 
+    NewNotaEvolDialogComponent,
+    HistorialPagosComponent, 
+    OdontogramaComponent, 
+    PaymentDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    CurrencyMaskModule,
     MatFormFieldModule,
     MatRadioModule,
     MatPaginatorModule,
@@ -72,12 +82,10 @@ const routes: Routes = [
     MatButtonModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule,
     MatSnackBarModule,
     MatCardModule,
     MatSelectModule,
     MatDatepickerModule,
-    ReactiveFormsModule,
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
@@ -85,7 +93,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [interceptorProviders, { provide: LOCALE_ID, useValue: 'es-MX' }],
-  exports: []
+  providers: [interceptorProviders, { provide: LOCALE_ID, useValue: 'es-MX' }, DatePipe],
+  exports: [CurrencyFormatDirectiveDirective]
 })
 export class PacientesModule { }

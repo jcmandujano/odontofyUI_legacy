@@ -103,7 +103,7 @@ export class ExpedientePacienteComponent {
     }
 
     goToOdontograma(){
-      this.router.navigate(['odontograma', { id: this.pacienteId  }])
+      this.router.navigate(['odontograma', { id: this.pacienteId }])
       //this.router.navigate([''])
     }
 

@@ -32,10 +32,11 @@ import { AuthModule } from './auth/auth.module';
 import { PacientesModule } from './pacientes/pacientes.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

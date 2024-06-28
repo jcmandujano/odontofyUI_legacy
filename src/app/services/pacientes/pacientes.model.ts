@@ -1,24 +1,4 @@
 export class Paciente {
-    /* public id!: string
-    public nombre: string
-    public apellido_paterno!:string
-    public apellido_materno!:string
-    public email!: string
-    public fecha_nacimiento!: Date
-    public genero!: string
-    public ocupacion!: string
-    public telefono!: string
-    public domicilio!: string
-    public nombre_contacto_emergencia!:string
-    public telefono_contacto_emergencia!:string
-    public relacion_contacto_emergencia!:string
-    public motivo_de_consulta!:string
-    public rfc!:string
-    public createdAt!: Date
-    public antecedentes_heredofamiliares!:string
-    public antecedentes_personales_patologicos!: {}
-    public estado_civil!:string */
-
     public id!: number;
     public user_id!: number;
     public name!: string
