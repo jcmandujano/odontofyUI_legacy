@@ -40,6 +40,7 @@ import { PaymentDialogComponent } from './shared/payment.dialog/payment.dialog.c
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { DatePipe } from '@angular/common';
 import { CurrencyFormatDirectiveDirective } from '../directives/currency-format-directive.directive';
+import { ConsentimientosComponent } from './consentimientos/consentimientos.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -49,7 +50,8 @@ const routes: Routes = [
   {   path: 'lista-pacientes',   component: ListaPacientesComponent   },
   {   path: 'notas-evolucion',   component: NotasEvolucionComponent   },
   {   path: 'historial-pagos',   component: HistorialPagosComponent   },
-  {   path: 'odontograma',   component: OdontogramaComponent   }
+  {   path: 'odontograma',   component: OdontogramaComponent   },
+  {   path: 'consentimientos',   component: ConsentimientosComponent   } 
 ];
 
 @NgModule({
@@ -64,7 +66,8 @@ const routes: Routes = [
     NewNotaEvolDialogComponent,
     HistorialPagosComponent, 
     OdontogramaComponent, 
-    PaymentDialogComponent],
+    PaymentDialogComponent,
+    ConsentimientosComponent],
   imports: [
     CommonModule,
     FormsModule,

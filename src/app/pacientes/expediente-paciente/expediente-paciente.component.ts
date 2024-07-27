@@ -84,7 +84,6 @@ export class ExpedientePacienteComponent {
     }
 
     goToExpediente(){
-      console.log('AMOSs')
       this.router.navigate(['/crea-pacientes', { id: this.pacienteId  }])
     }
 
@@ -94,20 +93,19 @@ export class ExpedientePacienteComponent {
 
     goToHistorialPagos(){
       this.router.navigate(['historial-pagos', { id: this.pacienteId  }])
-      //this.router.navigate([''])
     }
 
     goToConcentimientos(){
       console.log('No Implementado aun')
-      //this.router.navigate([''])
     }
 
     goToOdontograma(){
       this.router.navigate(['odontograma', { id: this.pacienteId }])
-      //this.router.navigate([''])
     }
 
-
+    goToConsentimientos(){
+      this.router.navigate(['consentimientos', { id: this.pacienteId }])
+    }
 
     openSnackbar(message: string, action: string) {
       this.snackBar.open(message, action, {
