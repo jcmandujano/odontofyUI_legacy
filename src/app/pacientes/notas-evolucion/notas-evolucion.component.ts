@@ -2,10 +2,8 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatTableDataSource} from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Paciente } from 'src/app/services/pacientes/pacientes.model';
 import { NewNotaEvolDialogComponent } from '../shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
 import { NotasService } from 'src/app/services/notas-evolucion/notas.evolucion.service';
 import { NotaEvolucion } from 'src/app/services/notas-evolucion/notas.evolucion.model';
@@ -18,7 +16,6 @@ import { ConfirmDialogComponent } from '../shared/confirm.dialog/confirm.dialog.
 })
 export class NotasEvolucionComponent {
   displayedColumns: string[] = ['id', 'fecha', 'nota', 'actions'];
-  //dataSource = new MatTableDataSource<Paciente>();
   dataSource: NotaEvolucion[];
   spinner= false
   notasList: NotaEvolucion[] = []
@@ -65,7 +62,6 @@ export class NotasEvolucionComponent {
     this.notasService.listarNotas(this.pacienteId).subscribe(data=>{
       this.notasList = data.notes
       this.dataSource = this.notasList
-      
       this.spinner = false
     },(error)=>{
       this.spinner = false
@@ -91,7 +87,6 @@ export class NotasEvolucionComponent {
     const newNota = new NotaEvolucion()
     newNota.patient_id = this.pacienteId
     newNota.note = response.noteContent
-    console.log('CREANDO UNA NOTA', newNota)
     this.spinner = true
     this.notasService.crearNota(this.pacienteId, newNota).subscribe(data=>{
       this.listarNotas()
