@@ -71,7 +71,6 @@ export class ExpedientePacienteComponent {
       if(this.pacienteId){
         this.spinner = true
         this.pacientesService.buscarPaciente(this.pacienteId).subscribe(data=>{
-          console.log('DATA', data.patient)
           this.paciente = data.patient
           //this.patchValuesToEdit(data.data.attributes)
           this.spinner = false

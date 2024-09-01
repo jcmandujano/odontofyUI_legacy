@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PaymentDialogComponent } from '../shared/payment.dialog/payment.dialog.component';
+import { PaymentDialogComponent } from '../shared/dialogs/payment.dialog/payment.dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Paciente } from 'src/app/services/pacientes/pacientes.model';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.services';
@@ -11,7 +11,7 @@ import { Concept } from 'src/app/services/concepts/concepts.model';
 import { PaymentService } from 'src/app/services/payment/payment.service';
 import { Payment } from 'src/app/services/payment/payment.model';
 import { PaymentConcept } from 'src/app/services/payment/payment-concept.model';
-import { ConfirmDialogComponent } from '../shared/confirm.dialog/confirm.dialog.component';
+import { ConfirmDialogComponent } from '../shared/dialogs/confirm.dialog/confirm.dialog.component';
 
 @Component({
   selector: 'app-historial-pagos',

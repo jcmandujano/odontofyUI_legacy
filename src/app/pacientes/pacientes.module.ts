@@ -30,17 +30,20 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import {LOCALE_ID } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ConfirmDialogComponent } from './shared/confirm.dialog/confirm.dialog.component';
+import { ConfirmDialogComponent } from './shared/dialogs/confirm.dialog/confirm.dialog.component';
 import { ExpedientePacienteComponent } from './expediente-paciente/expediente-paciente.component';
 import { NotasEvolucionComponent } from './notas-evolucion/notas-evolucion.component';
-import { NewNotaEvolDialogComponent } from './shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
+import { NewNotaEvolDialogComponent } from './shared/dialogs/new.nota.evol.dialog/new.nota.evol.dialog.component';
 import { HistorialPagosComponent } from './historial-pagos/historial-pagos.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
-import { PaymentDialogComponent } from './shared/payment.dialog/payment.dialog.component';
+import { PaymentDialogComponent } from './shared/dialogs/payment.dialog/payment.dialog.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { DatePipe } from '@angular/common';
 import { CurrencyFormatDirectiveDirective } from '../directives/currency-format-directive.directive';
 import { ConsentimientosComponent } from './consentimientos/consentimientos.component';
+import { PrintConsentDialogComponent } from './shared/dialogs/print-consent.dialog/print-consent.dialog.component';
+import { NewSignedConsentDialogComponent } from './shared/dialogs/new-signed-consent.dialog/new-signed-consent.dialog.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 registerLocaleData(localeEs, 'es');
 
@@ -67,7 +70,9 @@ const routes: Routes = [
     HistorialPagosComponent, 
     OdontogramaComponent, 
     PaymentDialogComponent,
-    ConsentimientosComponent],
+    ConsentimientosComponent,
+    PrintConsentDialogComponent,
+    NewSignedConsentDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -93,6 +98,7 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatDialogModule,
+    NgxDropzoneModule,
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
