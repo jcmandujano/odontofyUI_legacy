@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Paciente } from 'src/app/services/pacientes/pacientes.model';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.services';
-import { ConfirmDialogComponent } from '../shared/confirm.dialog/confirm.dialog.component';
+import { ConfirmDialogComponent } from '../shared/dialogs/confirm.dialog/confirm.dialog.component';
 
 @Component({
   selector: 'app-lista-pacientes',

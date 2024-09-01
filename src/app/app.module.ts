@@ -31,6 +31,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { AuthModule } from './auth/auth.module';
 import { PacientesModule } from './pacientes/pacientes.module';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatListModule,
+    NgxDropzoneModule,
     MatExpansionModule
   ],
   //providers: [interceptorProviders, { provide: MAT_DATE_LOCALE, useValue: 'es-MX' }],

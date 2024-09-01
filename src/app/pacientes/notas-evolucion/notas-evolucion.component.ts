@@ -4,10 +4,10 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NewNotaEvolDialogComponent } from '../shared/new.nota.evol.dialog/new.nota.evol.dialog.component';
+import { NewNotaEvolDialogComponent } from '../shared/dialogs/new.nota.evol.dialog/new.nota.evol.dialog.component';
 import { NotasService } from 'src/app/services/notas-evolucion/notas.evolucion.service';
 import { NotaEvolucion } from 'src/app/services/notas-evolucion/notas.evolucion.model';
-import { ConfirmDialogComponent } from '../shared/confirm.dialog/confirm.dialog.component';
+import { ConfirmDialogComponent } from '../shared/dialogs/confirm.dialog/confirm.dialog.component';
 
 @Component({
   selector: 'app-notas-evolucion',
@@ -26,7 +26,6 @@ export class NotasEvolucionComponent {
     private domSanitizer: DomSanitizer, 
     private notasService: NotasService, 
     private snackBar: MatSnackBar,
-    private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private elementRef: ElementRef) {
